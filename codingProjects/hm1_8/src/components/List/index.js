@@ -9,10 +9,11 @@ class List extends Component {
 
     render() {
         return (
-            <div>
+            <Table responsive>
                 <ListHead />
                 <ListBody />
-            </div>
+                <Page />
+            </Table>
         );
     }
 }

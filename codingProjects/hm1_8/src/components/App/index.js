@@ -10,7 +10,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userArr: [
+            usersArr: [
                 {
                     id: 1,
                     fName: "ZZK",
@@ -98,23 +98,15 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                <SearchBar />
-                <List />
-                <SingleItemForm />
-                <Page />
-            </div>
+            <BrowserRouter>
+                <switch>
+                    <SearchBar />
+                    <List />
+                </switch>
+                <Route path="/edit" component={Edit} />
+            </BrowserRouter>
         );
     }
 }
 
 export default App;
-
-/*
-          filter={this.state.showFilterArr}
-          usersArr={this.state.filterArr}
-
-
-          onSubmitHandler={this.state.formSubmitHandler}
-          user={this.state.userArr[0]}
-*/
