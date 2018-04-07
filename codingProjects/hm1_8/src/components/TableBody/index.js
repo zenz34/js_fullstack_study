@@ -1,21 +1,21 @@
 import React, { Component } from "react";
-import ListItem from "../ListItem";
+import TableItem from "../TableItem";
 
-const ListBody = props => {
-  console.log("TBody");
-  console.log("props.usersArr");
-  console.log(props.usersArr);
+const TableBody = props => {
+    console.log("TBody");
+    console.log("props.usersArr");
+    console.log(props.usersArr);
 
-  // if empty   return empty table
+    // if empty   return empty table
 
-  return (
-    <div>
-      <ListItem />
-    </div>
-  );
+    return (
+        <tbody>
+            <TableItem />
+        </tbody>
+    );
 };
 
-export default ListBody;
+export default TableBody;
 
 /*
       <li key={item.id} style={{ listStyleType: "none" }}>

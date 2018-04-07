@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 
-const ListHead = props => {
+const TableHead = props => {
     return (
         <thead>
             <tr>
                 <th>Edit</th>
                 <th>
-                    <th>First Name</th>
+                    <button>First Name</button>
                 </th>
                 <th>
                     <button>Last Name</button>
@@ -26,4 +26,4 @@ const ListHead = props => {
     );
 };
 
-export default ListHead;
+export default TableHead;

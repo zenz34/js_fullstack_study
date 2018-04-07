@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-import List from "../List";
-import ListHead from "../ListHead";
-import ListBody from "../ListBody";
-import SearchBar from "../SearchBar";
-import Page from "../Page";
-import SingleItemForm from "../SingleItemForm";
+import UsersTable from "../UsersTable";
+import SingleUserForm from "../SingleUserForm";
 
 class App extends Component {
     constructor(props) {
@@ -98,13 +94,10 @@ class App extends Component {
 
     render() {
         return (
-            <BrowserRouter>
-                <switch>
-                    <SearchBar />
-                    <List />
-                </switch>
-                <Route path="/edit" component={Edit} />
-            </BrowserRouter>
+            <div>
+                <UsersTable />
+                <SingleUserForm />
+            </div>
         );
     }
 }

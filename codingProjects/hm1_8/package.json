@@ -7,10 +7,12 @@
     "axios": "^0.18.0",
     "fast-xml-parser": "^3.3.4",
     "fs": "0.0.1-security",
-    "react": "^16.2.0",
+    "react": "^16.3.1",
     "react-bootstrap": "^0.32.1",
-    "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1"
+    "react-dom": "^16.3.1",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.1",
+    "reactstrap": "^5.0.0-beta.3"
   },
   "scripts": {
     "start": "react-scripts start",
