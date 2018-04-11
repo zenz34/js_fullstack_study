@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import UsersTable from "../UsersTable";
 import SingleUserForm from "../SingleUserForm";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 class App extends Component {
     constructor(props) {
@@ -94,10 +95,23 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                <UsersTable />
-                <SingleUserForm />
-            </div>
+            <BrowserRouter>
+                <Switch>
+                    <Route path="/" component={UsersTable} />
+                    <Route
+                        path="/edit"
+                        component={() => {
+                            <SingleUserForm edit={true} />;
+                        }}
+                    />
+                    <Route
+                        path="/delete"
+                        component={() => {
+                            <SingleUserForm edit={false} />;
+                        }}
+                    />
+                </Switch>
+            </BrowserRouter>
         );
     }
 }

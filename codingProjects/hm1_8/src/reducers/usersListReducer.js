@@ -2,8 +2,10 @@
 const mock_users = [
     {
         UserId: 1,
-        Name: "Zack",
+        FName: "Zack",
+        LName: "Zhao",
         Title: "Manager",
+        Age: 29,
         Sex: "Male",
         StartDate: "2018-01-29",
         OfficePhone: 34322171745,
@@ -15,8 +17,10 @@ const mock_users = [
     },
     {
         UserId: 2,
-        Name: "Hudi",
+        FName: "Hudy",
+        LName: "Hu",
         Title: "worker",
+        Age: 22,
         Sex: "Male",
         StartDate: "2018-02-29",
         OfficePhone: 68789971745,
@@ -28,7 +32,9 @@ const mock_users = [
     },
     {
         UserId: 3,
-        Name: "KK",
+        FName: "KK",
+        LName: "Zhang",
+        Age: 21,
         Title: "worker",
         Sex: "Female",
         StartDate: "2018-02-28",
