@@ -24,11 +24,15 @@ class App extends Component {
 
         this.fetchAllUsers();
     };
+
     render() {
         return (
             <div>
                 {this.state.screen === "list" && (
                     <ListContacts
+                        onNavigate={() => {
+                            this.setState({ screen: "create" });
+                        }}
                         onDeleteContact={this.removeContact}
                         contacts={this.state.contacts}
                     />
