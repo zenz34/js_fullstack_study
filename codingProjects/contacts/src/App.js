@@ -1,21 +1,16 @@
 import React, { Component } from "react";
 import ListContacts from "./ListContacts";
 import * as ContactsAPI from "./utils/ContactsAPI";
+import CreateContact from "./CreateContact";
 
 class App extends Component {
     state = {
+        screen: "list", // "create"
         contacts: []
     };
 
-    /*
-export const getAll = () =>
-    fetch(`${api}/contacts`, { headers })
-        .then(res => res.json())
-        .then(data => data.contacts);
-        */
     fetchAllUsers() {
         this.state.contacts = ContactsAPI.getAll().then(contacts => {
-            console.log(contacts);
             this.setState({ contacts });
         });
     }
@@ -32,10 +27,13 @@ export const getAll = () =>
     render() {
         return (
             <div>
-                <ListContacts
-                    onDeleteContact={this.removeContact}
-                    contacts={this.state.contacts}
-                />
+                {this.state.screen === "list" && (
+                    <ListContacts
+                        onDeleteContact={this.removeContact}
+                        contacts={this.state.contacts}
+                    />
+                )}
+                {this.state.screen === "create" && <CreateContact />}
             </div>
         );
     }
