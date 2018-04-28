@@ -4,6 +4,7 @@ import { shelfNameArr } from "./config";
 class BookItem extends Component {
     constructor(props) {
         super(props);
+        console.log("BookItem");
         console.log(this.props.book);
         // this.props.book:  title  imageLinks.thumbnail  authors[]  shelf
         // onSelectOption
@@ -24,7 +25,7 @@ class BookItem extends Component {
             authorsStr = authors.join(", ");
         }
         return (
-            <div>
+            <div className="book">
                 <div className="book-top">
                     <div
                         className="book-cover"

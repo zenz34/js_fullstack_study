@@ -15,7 +15,7 @@ class BookShelf extends Component {
         console.log("BookShelf");
         console.log(Array.isArray(books));
         return (
-            <ul>
+            <ol className="books-grid">
                 {books.map(item => (
                     <li key={item.title}>
                         <BookItem
@@ -24,7 +24,7 @@ class BookShelf extends Component {
                         />
                     </li>
                 ))}
-            </ul>
+            </ol>
         );
     }
 }

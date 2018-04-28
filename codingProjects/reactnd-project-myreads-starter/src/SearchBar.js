@@ -7,13 +7,17 @@ import BookShelf from "./BookShelf";
 class SearchBar extends Component {
     render() {
         return (
-            <div>
-                <Link to="/">Back</Link>
-                <input
-                    type="text"
-                    onChange={this.props.inputOnChangeHandler}
-                    value={this.props.searchInput}
-                />
+            <div className="search-books-bar">
+                <Link to="/" className="close-search">
+                    Back
+                </Link>
+                <div className="search-books-input-wrapper">
+                    <input
+                        type="text"
+                        onChange={this.props.inputOnChangeHandler}
+                        value={this.props.searchInput}
+                    />
+                </div>
             </div>
         );
     }

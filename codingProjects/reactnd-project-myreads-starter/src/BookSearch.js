@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SearchBar from "./SearchBar";
 import BookShelf from "./BookShelf";
 import * as BooksAPI from "./BooksAPI";
+import { utilUpdateShelfOfBook } from "./util";
 
 class BookSearch extends Component {
     constructor(props) {
@@ -32,43 +33,32 @@ class BookSearch extends Component {
     };
 
     changeShelfOfBook = (book, shelf) => {
-        console.log("changeShelfOfBook2   shelf");
-        console.log(shelf);
-        console.log(book);
-        BooksAPI.update(book, "wantToRead").then(res =>
-            console.log("changeShelfOfBook333333   " + JSON.stringify(res))
+        let newBooksArr = utilUpdateShelfOfBook(
+            book,
+            shelf,
+            this.state.searchResult
         );
-        //getBooks();
-        console.log("changeShelfOfBook");
-        console.log(book);
-        this.setState(prevState => {
-            let arr = prevState.searchResult.map(bookItem => {
-                if (bookItem.id === book.id) {
-                    bookItem.shelf = shelf;
-                }
-                return bookItem;
-            });
-            return { searchResult: arr };
+
+        this.setState({
+            searchResult: newBooksArr
         });
     };
 
     render() {
         return (
-            <div>
+            <div className="search-books">
                 <SearchBar
                     searchInput={this.state.searchQuery}
                     inputOnChangeHandler={this.inputOnChangeHandler}
                 />
-                {console.log(
-                    "BookSearch this.state.searchResult.length" +
-                        this.state.searchResult.length
-                )}
-                {this.state.searchResult.length !== 0 && (
-                    <BookShelf
-                        books={this.state.searchResult}
-                        onSelectOption={this.changeShelfOfBook}
-                    />
-                )}
+                <div className="search-books-results">
+                    {this.state.searchResult.length !== 0 && (
+                        <BookShelf
+                            books={this.state.searchResult}
+                            onSelectOption={this.changeShelfOfBook}
+                        />
+                    )}
+                </div>
             </div>
         );
     }
