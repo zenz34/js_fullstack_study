@@ -17,7 +17,7 @@ class BookShelf extends Component {
         return (
             <ol className="books-grid">
                 {books.map(item => (
-                    <li key={item.title}>
+                    <li key={item.id}>
                         <BookItem
                             book={item}
                             onSelectOptionHandler={this.props.onSelectOption}

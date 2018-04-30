@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 import BookShelf from "./BookShelf";
 import * as BooksAPI from "./BooksAPI";
 import { utilUpdateShelfOfBook } from "./util";
+import {
+    CURRENTLYREADING_FILTER_STR,
+    WANTTOREAD_FILTER_STR,
+    READ_FILTER_STR
+} from "./config";
+import * as _ from "lodash";
+
 class BookList extends Component {
     constructor(props) {
         super(props);
@@ -29,23 +36,6 @@ class BookList extends Component {
 
         this.setState({ booksArray: newBooksArr });
     };
-    // changeShelfOfBook = (book, shelf) => {
-    //     BooksAPI.update(book, shelf).then(res =>
-    //         console.log("changeShelfOfBook   " + res)
-    //     );
-    //     //getBooks();
-    //     console.log("changeShelfOfBook");
-    //     console.log(book);
-    //     this.setState(prevState => {
-    //         let arr = prevState.booksArray.map(bookItem => {
-    //             if (bookItem.id === book.id) {
-    //                 bookItem.shelf = shelf;
-    //             }
-    //             return bookItem;
-    //         });
-    //         return { booksArray: arr };
-    //     });
-    // };
 
     render() {
         return (
@@ -61,9 +51,13 @@ class BookList extends Component {
                             </h2>
                             <div className="bookshelf-books">
                                 <BookShelf
-                                    books={this.state.booksArray.filter(
-                                        book =>
-                                            book.shelf === "currentlyReading"
+                                    books={_.sortBy(
+                                        this.state.booksArray.filter(
+                                            book =>
+                                                book.shelf ===
+                                                CURRENTLYREADING_FILTER_STR
+                                        ),
+                                        "title"
                                     )}
                                     onSelectOption={this.changeShelfOfBook}
                                 />
@@ -72,8 +66,12 @@ class BookList extends Component {
                         <div>
                             <h2>Want To Read</h2>
                             <BookShelf
-                                books={this.state.booksArray.filter(
-                                    book => book.shelf === "wantToRead"
+                                books={_.sortBy(
+                                    this.state.booksArray.filter(
+                                        book =>
+                                            book.shelf === WANTTOREAD_FILTER_STR
+                                    ),
+                                    "title"
                                 )}
                                 onSelectOption={this.changeShelfOfBook}
                             />
@@ -81,8 +79,11 @@ class BookList extends Component {
                         <div>
                             <h2>Read</h2>
                             <BookShelf
-                                books={this.state.booksArray.filter(
-                                    book => book.shelf === "read"
+                                books={_.sortBy(
+                                    this.state.booksArray.filter(
+                                        book => book.shelf === READ_FILTER_STR
+                                    ),
+                                    "title"
                                 )}
                                 onSelectOption={this.changeShelfOfBook}
                             />

@@ -17,6 +17,16 @@ class BookItem extends Component {
         };
     }
 
+    onChangeHandler = e => {
+        this.setState({ selection: e.target.value }, () => {
+            //  call changeShelfOfBook func, pass in current book and new selected shelf
+            this.props.onSelectOptionHandler(
+                this.props.book,
+                this.state.selection
+            );
+        });
+    };
+
     render() {
         let authorsStr;
 
@@ -43,25 +53,16 @@ class BookItem extends Component {
                     <div className="book-shelf-changer">
                         <select
                             value={this.state.selection}
-                            onChange={e => {
-                                //console.log("BookItem Select onChange");
-                                //console.log(e.target.value);
-                                this.setState(
-                                    { selection: e.target.value },
-                                    () => {
-                                        this.props.onSelectOptionHandler(
-                                            this.props.book,
-                                            this.state.selection
-                                        );
-                                    }
-                                );
-                            }}
+                            onChange={this.onChangeHandler}
                         >
                             <option value="moveTo" disabled>
                                 Move to...
                             </option>
                             {shelfNameArr.map(shelf => (
-                                <option value={shelf.shelfServerValue}>
+                                <option
+                                    value={shelf.shelfServerValue}
+                                    key={shelf.shelfServerValue}
+                                >
                                     {shelf.displayName}
                                 </option>
                             ))}
@@ -76,39 +77,3 @@ class BookItem extends Component {
 }
 
 export default BookItem;
-
-// onClick={() => {
-//     console.log("BookItem onClick");
-//     this.props.onSelectOption(
-//         this.props.book,
-//         shelf.shelfServerValue
-//     );
-// }}
-
-{
-    /* <div>
-    {this.props.book.title} + {this.props.book.imageLinks.thumbnail}{" "}
-    + {authorsStr} + {this.props.book.shelf}
-</div> */
-}
-
-// <option value="currentlyReading" selected={"currentlyReading" === this.props.book.shelf} defaultValue={} onClick={e => {
-//         this.props.onSelectOption(this.props.book, e.target.value);
-//     }}>
-//     Currently Reading
-// </option>
-// <option value="wantToRead" selected={"wantToRead" === this.props.book.shelf} onClick={e => {
-//         this.props.onSelectOption(this.props.book, e.target.value);
-//     }}>
-//     Want to Read
-// </option>
-// <option value="read" selected={"read" === this.props.book.shelf} onClick={e => {
-//         this.props.onSelectOption(this.props.book, e.target.value);
-//     }}>
-//     Read
-// </option>
-// <option value="none" onClick={e => {
-//         this.props.onSelectOption(this.props.book, e.target.value);
-//     }}>
-//     None
-// </option>
